@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './product-card.module.css'
 
 interface ProductProps {
@@ -10,12 +10,13 @@ interface ProductProps {
 export function ProductCard(props: ProductProps) {
     const {title, price, image} = props
     const [counter, setCounter] = useState(0)
+
     function incrementProduct(){
         if (counter < 100){
             setCounter(counter + 1)
         }
     }
-     function decrementProduct(){
+    function decrementProduct(){
         if (counter > 0){
             setCounter(counter - 1)
         }
@@ -31,6 +32,8 @@ export function ProductCard(props: ProductProps) {
             <button className = {styles.counterButton} onClick={incrementProduct}>&#43;</button>
             <button className = {styles.counterButton} onClick={decrementProduct}>&#8722;</button>
         </div>
+        <button className={styles.buttonMore}>More</button>
+        
     </div>
 
 }

@@ -9,6 +9,8 @@
     border-radius: 16px;
     justify-content: center;
     align-items: center;
+    position: relative;
+    margin: 30px;
 }
 
 .counterBlock{
@@ -41,4 +43,23 @@
 
 .counter{
     font-size: 18px;
+}
+.buttonMore{
+    position: absolute;
+    top:100%;
+    transform: translateY(-50%);
+    height: 30px;
+    width: 100px;
+    background-color: #FAF0E6;
+    border: none;
+    border-radius: 16px;
+
+}
+.buttonMore:hover{
+    background-color: #FFBF80;
+
+}
+.buttonMore:active{
+    background-color: white;
+    border: 1px solid #FFBF80;
 }

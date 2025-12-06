@@ -1,0 +1,50 @@
+.container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(250px, 1fr) 3fr;
+}
+.filterBlock{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 30px;
+}
+.productListBlock{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 5px;
+}
+.productList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.searchBarBlock{
+    width: 100%;
+    /* flex-grow: 1; */
+    /* flex-shrink: 1; */
+    /* flex-basis: 150px */
+    /* flex: 1; */
+
+    height: 50px; 
+    border-radius: 16px;
+    display: flex;
+    padding: 9px 18px 9px 18px;
+    background-color: #EBE7E7
+    
+}
+.searchBarBlock input{
+    border: none;
+    width: 100%;
+    background-color: transparent;
+}
+.searchIcon{ 
+    fill: none;
+}
+.selectCategoryBlock{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 20px;
+}

@@ -5,6 +5,7 @@ import {ReactComponent as SearchIcon} from './../../assets/svg/search.svg'
 import {ReactComponent as MenuIcon} from './../../assets/svg/menu.svg'
 
 export function Header(){
+
     return <header>
         <div className={styles.logoBlock}>
             <img src={logoImage} alt="Logo" />
