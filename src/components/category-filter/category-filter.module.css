@@ -1,0 +1,18 @@
+.selectCategoryBlock{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 20px;
+}
+
+.labelSelectCategory{
+    display: flex;
+    gap: 10px;
+    font-size: 20px;
+}
+
+.labelSelectCategory input{
+    accent-color: #1D1B20;
+    width: 20px;
+    height: 20px;
+}
