@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
 import styles from "./category-filter.module.css"
 import { CategoryFilterProps } from "./category-filter.types";
-import { Category } from "../../shared/types";
+import { useGetCategories } from "../../shared/api";
 
 
 export function CategoryFilter(props: CategoryFilterProps){
     const {selectedCategoryId, setSelectedCategoryId} = props;
-    const [categories, setCategories] = useState<Category[]>([])
+    const {isLoading, error, categories} = useGetCategories()
+   
 
-    useEffect( () => {
-        
-    }, [])
+    if (isLoading) {
+        return <div>Loading...</div>
+    }
+    if (error ) {
+        return <div>Error occured. Try again later. <p>Error message: {error}</p></div>
+    }
 
     return (
         <div className={styles.selectCategoryBlock}>
