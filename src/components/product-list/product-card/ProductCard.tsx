@@ -4,7 +4,7 @@ import { ProductCardProps } from './product-card.types'
 
 
 export function ProductCard(props: ProductCardProps) {
-    const {title, price, image} = props
+    const {name, price, image} = props
     const [counter, setCounter] = useState(0)
 
     function incrementProduct(){
@@ -20,7 +20,7 @@ export function ProductCard(props: ProductCardProps) {
 
     return <div className={styles.block}>
         <img className = {styles.image} src = {image} alt=''/>
-        <p className = {styles.title}>Title: {title}</p>
+        <p className = {styles.title}>Title: {name}</p>
         <p className = {styles.price}>Price: {price}</p>
 
         <div className={styles.counterBlock}>
