@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+}
+
+.header{
+    font-size: 48px;
+}
+
+.img{
+    width: 680px;
+    height: 680px;
+}
