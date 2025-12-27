@@ -35,9 +35,10 @@ export function SearchBar(){
         setFilteredProducts(newProducts)
     }, [products, search])
 
-    const doShowContent = !isLoading && !error && filteredProducts
+    const isContent = !isLoading && !error && filteredProducts.length > 0
+    const isContentEmpty = !isLoading && !error && filteredProducts.length === 0
 
-    return <div className={styles.searchBarBlock}>
+    return <div className={styles.searchBarBlock} style={{borderRadius: isOpen ? 0 : 16}}>
         <input 
             onFocus={() => setIsOpen(true)}
             onBlur={() => setIsOpen(false)}
@@ -48,10 +49,11 @@ export function SearchBar(){
             className = {styles.searchInput}
             />
         <ICONS.Search className={styles.searchIcon} />
+
         {isOpen && <div className={styles.modalContainer}>
             <div className={styles.modalContent}>
-                {doShowContent && filteredProducts.map( product => {
-                    return <Link 
+                {isContent && filteredProducts.map( product => {
+                    return <Link
                         to={`/products/${product.id}`}
                         key={product.id}
                         className={styles.searchItem}
@@ -61,6 +63,7 @@ export function SearchBar(){
                             <span className={styles.searchItemName}>{product.name}</span>
                     </Link>
                 })}
+                {isContentEmpty && <div>No products found!</div>}
                 {isLoading && <div>Loading...</div>}
                 {error && <div>Error occured. Try again later</div>}
             </div>

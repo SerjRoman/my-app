@@ -13,7 +13,6 @@
     background-color: #EBE7E7;
 
     position: relative;
-    
 }
 
 
@@ -33,10 +32,12 @@
     position: absolute;
     top: 50px;
     left: 0;
-    width: 600px;
-    height: 400px;
+    width: 100%;
+    max-height: 400px;
     
     display: flex;
+    
+    z-index: 1;
 }
 .modalContent{
     flex-grow: 1;
@@ -45,17 +46,20 @@
     display: flex;
     
     background-color:rgba(235, 231, 231, 1);
-    border: 1px black solid;
-    border-radius: 16px;
-    
+    border-top: 1px black solid;
+    border-radius: 0px 0px 16px 16px;
+
     flex-direction: column;
     
     padding: 10px;
     gap: 10px;
+
+    overflow: auto;
 }
 
 .searchItem{
     display: flex;
+    align-items: center;
 
     padding: 10px 5px 10px 5px;
     gap: 10px;
@@ -68,6 +72,8 @@
     width: 25px;
     height: 25px;
     fill: none;
+    border-radius: 5px;
+    object-fit: cover;
 }
 
 .searchItemImage{
@@ -82,4 +88,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: black;
+    text-decoration: none;
 }
