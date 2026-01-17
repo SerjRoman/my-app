@@ -77,8 +77,8 @@ assets - статические файлы приложения(картинки
 
 
 
-                app   
-        pages pages pages        
+                app
+        pages pages pages
     components components components
 shared shared shared shared shared shared
 
