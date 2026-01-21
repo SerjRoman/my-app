@@ -43,7 +43,11 @@ export function ProductPage() {
             <div className={styles.productActions}>
                 <button className={styles.cartButton} onClick={() => {
                     if (!product) return
-                    cartCtx?.addToCart(product)
+                    if (cartCtx?.isInCart(product.id)) {
+                        cartCtx.incrementCount(product.id)
+                    } else {
+                        cartCtx?.addToCart(product)
+                    }
                 }}>Add to cart</button>
                 <button className={styles.buyButton}>Buy</button>
             </div>
