@@ -1,0 +1,30 @@
+.button{
+    width: 250px;
+    height: 70px;
+    
+    border-radius: 20px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+    font-size: 28px;
+
+    background-color: #FAF0E6;
+}
+
+.primary:hover {
+    background-color: #FFD9B3;
+}
+.primary:active {
+    border: 1px solid #FFD9B3;
+    background-color: #fff;
+}
+
+.secondary:hover {
+    background-color: #FFBF80;
+}
+.secondary:active {
+    border: 1px solid #FFBF80;
+    background-color: #fff;
+}

@@ -32,31 +32,3 @@
     display: flex;
     gap: 50px;
 }
-
-.productActions button {
-    width: 250px;
-    height: 70px;
-
-    border-radius: 20px;
-    border: none;
-
-    background-color: #FAF0E6;
-
-    font-size: 28px;
-}
-
-.cartButton:hover {
-    background-color: #FFD9B3;
-}
-.cartButton:active {
-    background-color: #FFFFFF;
-    border: 1px solid #FFD9B3;
-}
-
-.buyButton:hover {
-    background-color: #FFBF80;
-}
-.buyButton:active {
-    background-color: #FFFFFF;
-    border: 1px solid #FFBF80;
-}

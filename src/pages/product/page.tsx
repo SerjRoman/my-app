@@ -1,10 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom"
+import { Button } from "../../shared/ui"
 import {useGetProductById } from "../../shared/api"
 import styles from "./page.module.css"
-import { useContext, useEffect } from "react";
-import { CartContext } from "../../context";
-
-
+import { useEffect } from "react";
+import { useCartContext } from "../../context";
 
 export function ProductPage() {
     const params = useParams<{id:string}>();
@@ -12,14 +11,13 @@ export function ProductPage() {
     const id = Number(params.id)
     const {isLoading, product, error} = useGetProductById({id: id})
 
-    const cartCtx = useContext(CartContext)
+    const {incrementCount, addToCart, isInCart} = useCartContext()
     
     useEffect( () => {
-        if (isNaN(id)) {
+        if (Number.isNaN(id)) {
             navigate('/')
-            return
         }
-    }, [id])
+    }, [id, navigate])
 
     if(isLoading){
         return <div>Loading ...</div>
@@ -35,21 +33,21 @@ export function ProductPage() {
     
     return <div className={styles.container}>
         <div className={styles.productImageBlock}>
-            <img src = {product?.image} className={styles.productImage}/>
+            <img src = {product?.image} className={styles.productImage} alt = "Product."/>
         </div>
         <div className={styles.productInfoBlock}>
             <p className={styles.productTitle}>{product?.name}</p>
             <p className={styles.productDescription}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis et ea voluptatibus voluptate ut facere natus veniam autem corporis dolorum.</p>
             <div className={styles.productActions}>
-                <button className={styles.cartButton} onClick={() => {
+                <Button variant = "primary" onClick={() => {
                     if (!product) return
-                    if (cartCtx?.isInCart(product.id)) {
-                        cartCtx.incrementCount(product.id)
+                    if (isInCart(product.id)) {
+                        incrementCount(product.id)
                     } else {
-                        cartCtx?.addToCart(product)
+                        addToCart(product)
                     }
-                }}>Add to cart</button>
-                <button className={styles.buyButton}>Buy</button>
+                }}>Add to cart</Button>
+                <Button variant = "secondary">Buy</Button>
             </div>
         </div>
     </div>
