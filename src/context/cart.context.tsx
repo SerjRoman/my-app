@@ -1,9 +1,7 @@
-import { Product } from "../shared/types";
 import { createContext, PropsWithChildren, useContext, useState } from "react";
+import { CartItem, Product } from "../shared/types";
 
-interface CartItem extends Product {
-    count: number
-}
+
 interface CartContextContract {
     items: CartItem[]
     addToCart: (product: Product) => void
@@ -11,6 +9,8 @@ interface CartContextContract {
     isInCart: (id: number) => boolean;
     incrementCount: (id: number) => void;
     decrementCount: (id: number) => void;
+    removeAll: () => void;
+    totalPrice: () =>number;
 }
 
 const CartContext = createContext<CartContextContract | null>(null)
@@ -39,7 +39,7 @@ export function CartContextProvider({children}: PropsWithChildren) {
         })
         const foundProduct = newItems.find(cartItem => cartItem.id === id)
         
-        if (foundProduct) {
+        if (foundProduct && foundProduct.count < 100) {
             foundProduct.count++;
             setItems(newItems)
         }
@@ -51,15 +51,34 @@ export function CartContextProvider({children}: PropsWithChildren) {
         })
         const foundProduct = newItems.find(cartItem => cartItem.id === id)
         
-        if (foundProduct) {
-            foundProduct.count--;
-            setItems(newItems)
+        if (!foundProduct) return 
+
+        if (foundProduct.count === 1) {
+            removeFromCart(id)
+            return
         }
+        foundProduct.count--;
+        setItems(newItems)
     }
+    
     function isInCart(id: number): boolean{
         return items.some(cartItem => cartItem.id === id)
 
     }
+    
+    function removeAll(): void{
+        setItems([])
+    }
+    function totalPrice(): number{
+        let price = 0
+        for (const item of items){
+            price += item.price * item.count
+        }
+        return price
+    }
+    // const totalPrice = items.reduce((price, item) => {
+    //     return price + item.price
+    // }, 0)
 
     return <CartContext value={{
         items,
@@ -67,7 +86,9 @@ export function CartContextProvider({children}: PropsWithChildren) {
         addToCart,
         isInCart,
         incrementCount,
-        decrementCount
+        decrementCount,
+        removeAll,
+        totalPrice
     }}>{children}</CartContext>
 }
 

@@ -1,6 +1,5 @@
+import { Product } from "../../../shared/types";
 
 export interface ProductCardProps {
-    name: string,
-    price: number,
-    image: string
+    product: Product
 }

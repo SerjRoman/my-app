@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import styles from './product-card.module.css'
 import { ProductCardProps } from './product-card.types'
+import { useNavigate } from 'react-router-dom'
 
 
 export function ProductCard(props: ProductCardProps) {
-    const {name, price, image} = props
+    const {product} = props
     const [counter, setCounter] = useState(0)
 
     function incrementProduct(){
@@ -17,18 +18,19 @@ export function ProductCard(props: ProductCardProps) {
             setCounter(counter - 1)
         }
     }
+    const navigate = useNavigate()
 
     return <div className={styles.block}>
-        <img className = {styles.image} src = {image} alt=''/>
-        <p className = {styles.title}>Title: {name}</p>
-        <p className = {styles.price}>Price: {price}</p>
+        <img className = {styles.image} src = {product.image} alt=''/>
+        <p className = {styles.title}>Title: {product.name}</p>
+        <p className = {styles.price}>Price: {product.price}</p>
 
         <div className={styles.counterBlock}>
             <p className = {styles.counter}>Count: { counter }</p>
             <button className = {styles.counterButton} onClick={incrementProduct}>&#43;</button>
             <button className = {styles.counterButton} onClick={decrementProduct}>&#8722;</button>
         </div>
-        <button className={styles.buttonMore}>More</button>
+        <button onClick={() => navigate(`/products/${product.id}`)} className={styles.buttonMore}>More</button>
         
     </div>
 

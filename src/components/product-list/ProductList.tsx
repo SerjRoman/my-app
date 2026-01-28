@@ -17,9 +17,7 @@ export function ProductList(props: ProductListProps) {
 				{products.map((product) => {
 					return (
 						<ProductCard
-							name={product.name}
-							price={product.price}
-							image={product.image}
+							product={product}
 							key={product.id}
 						></ProductCard>
 					);

@@ -22,7 +22,7 @@ export function Header(){
             
            <SearchBar />
 
-            <Link to={'#cart'} className={styles.menuButton}>
+            <Link to={'cart'} className={styles.menuButton}>
                 <ICONS.Menu className={styles.menuButtonIcon}></ICONS.Menu>
                 Cart
             </Link>

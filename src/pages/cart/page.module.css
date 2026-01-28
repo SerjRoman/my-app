@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    flex: 1;
+
+    width: 100%;
+}
+.title {
+    text-align: center;
+}
+.actions {
+    display: flex;
+    gap: 50px;
+    padding: 10px;
+}
+.total {
+    font-weight: 700;
+    font-size: 48px;
+}

@@ -4,7 +4,7 @@ import styles from "./search-bar.module.css"
 import { useGetProducts } from "../../shared/api"
 import { Product } from "../../shared/types"
 import { Link } from "react-router-dom"
-import { Modal } from "../../shared/modal"
+import { Modal } from "../../shared/"
 
 
 

@@ -1,0 +1,77 @@
+.cartItem{
+    border-bottom: 1px solid black;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cartItemImage{
+    width: 230px;
+    height: 230px;
+}
+
+.cartItemMiddle{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cartItemMiddle p{
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    color: black;
+    font-weight: 400;
+}
+.cartItemMiddle b{
+    font-weight: 700;
+}
+
+.itemAmountButtons{
+    width: 90px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.itemButton{
+    border-radius: 32px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.itemButton svg{
+    width: 20px;
+    height: fit-content;
+    padding: 0;
+    margin: 0;
+}
+
+.add {
+    background-color: #96FA99;
+}
+
+.substract {
+    background-color: #F88686;
+}
+
+.itemControlButtons{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.itemControlButtons:last-child{
+    color: red;
+}
