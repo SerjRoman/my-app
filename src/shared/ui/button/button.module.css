@@ -29,3 +29,17 @@
     border: 1px solid #FFBF80;
     background-color: #fff;
 }
+
+.submit{
+    background-color: #EBE7E7;
+    width: 200px;
+}
+
+.submit:hover{
+    background-color: #C6BBBB;
+}
+
+.submit:active{
+    background-color: #FFF;
+    border: 1px solid black;
+}

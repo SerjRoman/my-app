@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HomePage, ProductsPage, ProductPage, NotFoundPage, CartPage, SignInPage } from "../pages";
+import { HomePage, ProductsPage, ProductPage, NotFoundPage, CartPage, SignInPage, SignUpPage } from "../pages";
 import { Layout } from "./layout";
 
 export function AppRoutes() {
@@ -12,6 +12,7 @@ export function AppRoutes() {
                     <Route path="/products/:id" element={<ProductPage/>} />
                     <Route path = "/cart" element = {<CartPage/>}/>
                     <Route path = "/sign-in" element = {<SignInPage/>}/>
+                    <Route path = "/sign-up" element = {<SignUpPage/>}/>
                     <Route path = "*" element = {<NotFoundPage/>}/>
                 </Route>
             </Routes>
