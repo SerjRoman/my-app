@@ -3,34 +3,28 @@ import { Button, IMAGES } from "./../../shared"
 import { useForm } from "react-hook-form"
 import { SignUpFormState } from "./sign-up.types"
 import { Link } from 'react-router-dom';
-import { API_URL } from "../../shared/api";
+import { API_URL, useRegister } from "../../shared/api";
+import { useUserContext } from "../../context";
+import { useEffect } from "react";
 
 
 export function SignUpPage(){
     const {register, formState, handleSubmit, setError} = useForm<SignUpFormState>()
-
+    const [registerRequest, {isLoading, error}] = useRegister()
+    const {setToken} = useUserContext()
     async function onSignUpSubmit(data: SignUpFormState) {
-        console.log('registaaaa')
-        console.log(data)
-        try {
-            const request =  await fetch(`${API_URL}/users/register`, {
-                method: "POST",
-                body: JSON.stringify(data),
-                headers: {"Content-Type": "application/json"}
-            })
-            if(request.status === 409){
-                setError("root", {message: "User with such email already exists!!!"})
-                return;
-            } else if(request.status === 500) {
-                setError("root", {message: "Internal Server Error. Try again later!"})
-                return;
-            }
-            const responseData = await request.json()
-            console.log(`${responseData}`)
-        } catch (error) {
-            console.log(error)
+        const response = await registerRequest(data)
+        if ("message" in response) {
+            setError('root', {message: response.message})
+        } else if ("token" in response) {
+            setToken(response.token)
+            localStorage.setItem('token', response.token)
         }
     }
+    useEffect(() => {
+        if (!error) return;
+        setError('root', {message: error})
+    }, [error])
 
     // errora 👍
     const emailError = formState.errors.email?.message
@@ -103,11 +97,11 @@ export function SignUpPage(){
                     </label>
                 </div>
                 <p className={styles.additionalInfo}>Already have an account? <Link to={'/sign-in'} className={styles.additionalInfoLink}>Sign in now! </Link></p>
-                <Button variant="submit" type="submit">Submit</Button>
+                <Button disabled={isLoading} variant="submit" type="submit">Submit</Button>
                 <p className = {styles.formErrorText}>{formState.errors.root?.message}</p>
             </form>
 
             <img src={IMAGES.signUpImage} alt="amazing thing!!!!!" className = {styles.signUpImg}/>
         </div>
     )
-}
+} 

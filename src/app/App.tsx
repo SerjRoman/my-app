@@ -1,10 +1,12 @@
-import { CartContextProvider } from "../context";
+import { CartContextProvider, UserContextProvider } from "../context";
 import { AppRoutes } from "./AppRoutes";
 
 export function App() {
     return (
-        <CartContextProvider >
-            <AppRoutes />
-        </CartContextProvider>
+        <UserContextProvider>
+            <CartContextProvider >
+                <AppRoutes />
+            </CartContextProvider>
+        </UserContextProvider>
     )
 }

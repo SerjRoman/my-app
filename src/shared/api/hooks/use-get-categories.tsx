@@ -10,6 +10,7 @@ interface UseGetCategories {
 
 // массив | объект | функция | void
 // Массив категорий, isLoading, error
+// 1ms      10ms
 export function useGetCategories(): UseGetCategories {
     const [categories, setCategories] = useState<Category[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(false)

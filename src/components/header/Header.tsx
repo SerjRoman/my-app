@@ -3,8 +3,10 @@ import styles from './header.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { IMAGES, ICONS } from '../../shared';
 import { SearchBar } from '../search-bar';
+import { useUserContext } from '../../context';
 
 export function Header(){
+    const { user } = useUserContext()
 
     const navigate =useNavigate()
 
@@ -27,9 +29,14 @@ export function Header(){
                 Cart
             </Link>
         </div>
+        {user ? 
         <div className={styles.profileBlock}>
-            <p>Username</p>
-            <img src={IMAGES.defaultAvatar} alt="Avatar" />
+            <p>{user.username}</p>
+            <img src={user.avatar ? user.avatar : IMAGES.defaultAvatar} alt="Avatar" />
+        </div> : <div className={styles.links}>
+            <Link to={'/sign-up'}>Sign Up</Link>
+            <Link to={'/sign-in'}>Sign In</Link>
         </div>
+        }
     </header>
 }
